@@ -29,11 +29,14 @@ public class User {
 	
 	@Column(unique = true)
 	private String username;
+	@Column(nullable = false)
 	private String password;
 	
+	@Column(nullable = false)
 	private String name;
 	private String website;
 	private String bio;//자기소개
+	@Column(nullable = false)
 	private String email;
 	private String phone;
 	private String gender;
