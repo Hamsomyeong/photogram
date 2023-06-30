@@ -24,13 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		//super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화됨
 		http.authorizeRequests()
-		.antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**")
-		.authenticated()
-		.anyRequest()
-		.permitAll() //해당 주소는 인증이 필요(loginPage로 자동 이동)하고, 그 외 주소는 모두 허용한다.
+		.antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**").authenticated()
+		.anyRequest().permitAll() //해당 주소는 인증이 필요(loginPage로 자동 이동)하고, 그 외 주소는 모두 허용한다.
 		.and()
 		.formLogin()
-		.loginPage("/auth/signin")
-		.defaultSuccessUrl("/");//로그인을 정상적으로 처리하면 "/"페이지로 이동한다.
+		.loginPage("/auth/signin")//GET 인증이 되지 않았으면
+		.loginProcessingUrl("/auth/signin") //POST  로그인 요청이 들어오면 UserDetailsService가 낚아챔 -> 로그인 진행(PrincipalDetailsService)
+		.defaultSuccessUrl("/");// 로그인을 정상적으로 처리하면 "/"페이지로 이동한다.
 	}
 }
