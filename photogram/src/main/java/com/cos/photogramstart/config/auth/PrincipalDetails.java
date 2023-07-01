@@ -2,7 +2,6 @@ package com.cos.photogramstart.config.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collector;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,14 +24,14 @@ public class PrincipalDetails implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 권한 리턴 : 한개가 아닐 수 있음. (3개 이상의 권한)
-		
+		// GrantedAuthority 타입으로 받아주기.
 		Collection<GrantedAuthority> collector = new ArrayList<>();
-//		collector.add(new GrantedAuthority(){
-//			@Override
-//			public String getAuthority() {
-//				return user.getRole();
-//			}
-//		});
+		 // 비어있는 권한을 부여해주기
+//        collector.add(() -> {    
+//                return user.getRole();        
+//        });
+//
+//        return collector;
 		//람다식
 		collector.add(()->{return user.getRole();});
 		return null;
