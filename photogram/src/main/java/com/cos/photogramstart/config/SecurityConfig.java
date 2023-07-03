@@ -23,13 +23,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 		
 		//super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화됨
-		http.authorizeRequests()
-		.antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**").authenticated()
-		.anyRequest().permitAll() //해당 주소는 인증이 필요(loginPage로 자동 이동)하고, 그 외 주소는 모두 허용한다.
-		.and()
-		.formLogin()
-		.loginPage("/auth/signin")//GET 인증이 되지 않았으면
-		.loginProcessingUrl("/auth/signin") //POST  로그인 요청이 들어오면 UserDetailsService가 낚아챔 -> 로그인 진행(PrincipalDetailsService)
-		.defaultSuccessUrl("/");// 로그인을 정상적으로 처리하면 "/"페이지로 이동한다.
+        http.authorizeRequests() // 이 주소경로로 요청이 들어오면
+        .antMatchers("/", "/user/**", "/image/**", "/subscribe/**", "/comment/**","/api/**")
+        .authenticated() // 인증이 필요하다.
+        .anyRequest() // 그 외의 요청들은
+        .permitAll() // 모두 허용한다.
+        .and() // 그리고
+        .formLogin() // 로그인(인증)이 필요한 요청이 들어오면
+        .loginPage("/auth/signin") // 로그인페이지 auth/signin 으로 이동시키고(GET요청)
+        .loginProcessingUrl("/auth/signin") // auth/signin 이라는 POST요청을 실행시킨다.(UserDetailsService가 낚아챔 -> 로그인 진행(PrincipalDetailsService))
+        .defaultSuccessUrl("/"); // 인증이 정삭적으로 완료되면 / 로 이동한다.
 	}
 }

@@ -1,28 +1,20 @@
 package com.cos.photogramstart.handler;
 
-import java.util.Map;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.photogramstart.handler.ex.CustomApiException;
 import com.cos.photogramstart.handler.ex.CustomValidationApiException;
 import com.cos.photogramstart.handler.ex.CustomValidationException;
 import com.cos.photogramstart.service.util.Script;
 import com.cos.photogramstart.web.CMRespDto;
 
 @RestController
-@ControllerAdvice // 모든 exception 낚아채기
+@ControllerAdvice // RuntimeException이 발생하는 모든 함수를 가로챔 
 public class ControllerExceptionHandler {
-
-	// RuntimeException이 발생하는 모든 함수를 가로챔 -> 내가 관리 CustomValidationException
-	// 에러 확인
-//	@ExceptionHandler(CustomValidationException.class)
-//	public Map<String, String> validationException(CustomValidationException e) {
-//		return e.getErrorMap();
-//	}
 
 	// JavaScript 응답하는 핸들러 (클라이언트에게 응답할때는 script 좋음)
 	@ExceptionHandler(CustomValidationException.class)
@@ -43,6 +35,11 @@ public class ControllerExceptionHandler {
 	public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
 		//유효성 검사 실패: -1, 에러 메세지, Object)
 		return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CustomApiException.class)
+	public ResponseEntity<?> apiException(CustomApiException e) {
+		return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), null), HttpStatus.BAD_REQUEST);
 	}
 
 }

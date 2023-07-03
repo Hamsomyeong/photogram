@@ -27,14 +27,8 @@ public class PrincipalDetails implements UserDetails{
 		// GrantedAuthority 타입으로 받아주기.
 		Collection<GrantedAuthority> collector = new ArrayList<>();
 		 // 비어있는 권한을 부여해주기
-//        collector.add(() -> {    
-//                return user.getRole();        
-//        });
-//
-//        return collector;
-		//람다식
 		collector.add(()->{return user.getRole();});
-		return null;
+		return collector;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package com.cos.photogramstart.domain.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer>{//Object,primary key type
-	//jpa query method 사용
-	//로그인 세션 저장
+	//jpa query method 사용 -> 메소드 이름으로 쿼리 작성 
+	//username 찾기
 	User findByUsername(String username);
 }

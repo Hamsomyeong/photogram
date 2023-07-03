@@ -31,7 +31,7 @@ public class AuthController {
 	// final은 무조건 초기화 해줘야함.
 	private final AuthService authService;
 //	public AuthController(AuthService authService) {
-//		//의존성 주입
+//		//의존성 주입 -> final
 //		//@Service 어노테이션으로 컨테이너에 AuthService 만들어 놓음.
 //		this.authService = authService;
 //	}

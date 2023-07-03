@@ -16,13 +16,16 @@ public class PrincipalDetailsService implements UserDetailsService{//로그인 �
 
 	private final UserRepository userRepository;
 	
+	//UserDetailsService 안에 loadUserByUsername 실행 -> 매개변수 username 밖에 없음 -> userRepository DB에서 찾음
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		User userEntitiy = userRepository.findByUsername(username);
-		if(userEntitiy == null)
-			return null;
-		else return new PrincipalDetails(userEntitiy);
+		User userEntity = userRepository.findByUsername(username);
+		 if (userEntity == null) { // username을 찾지 못했다면
+	            return null; // null을 리턴하고
+	        } else { // username을 찾았다면
+	            return new PrincipalDetails(userEntity); // principalDetails를 session에 저장한다.
+	        }
 	}
 
 }

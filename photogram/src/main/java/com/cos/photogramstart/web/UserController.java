@@ -26,9 +26,8 @@ public class UserController {
         
 //		//principal : 접근 주체 
 		//시큐리티 태그 라이브러리 사용 안했을 때, model 이용
-//		//시큐리티 태그 라이브러리 사용 했을때는 jsp에서 직접 값을 받아옴
 //		model.addAttribute("principal", principalDetails.getUser());
-		
+		//시큐리티 태그 라이브러리 사용 했을때는 jsp에서 직접 값을 받아옴
 		return "user/update";
 	}
 }

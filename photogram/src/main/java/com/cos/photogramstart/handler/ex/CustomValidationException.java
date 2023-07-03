@@ -2,6 +2,7 @@ package com.cos.photogramstart.handler.ex;
 
 import java.util.Map;
 
+//ControllerExceptionHandler이 낚아챔
 public class CustomValidationException extends RuntimeException {
 
 	// 객체를 구분함
