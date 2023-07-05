@@ -36,5 +36,5 @@ spring:
       name: test
       password: 1234   
 
-#file:
-#  path: C:/workspace/springbootwork/upload/
+file:
+  path: C:/workspace/springboot4/EaszUp-Springboot-Photogram-Start/upload/

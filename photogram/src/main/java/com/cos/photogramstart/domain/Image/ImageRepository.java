@@ -1,4 +1,4 @@
-package com.cos.photogramstart.domain.Image;
+package com.cos.photogramstart.domain.image;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

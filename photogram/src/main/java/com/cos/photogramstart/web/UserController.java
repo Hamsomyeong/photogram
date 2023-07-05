@@ -7,12 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.photogramstart.config.auth.PrincipalDetails;
+import com.cos.photogramstart.domain.user.User;
+import com.cos.photogramstart.service.UserService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class UserController {
 
+	private final UserService userService;
+	
 	@GetMapping({"/user/{id}"})
-	public String profile(@PathVariable int id) {
+	public String profile(@PathVariable int id, Model model) {//데이터 들고가기 model
+		User userEntitiy = userService.회원프로필(id);
+		model.addAttribute("images", userEntitiy);
 		return "user/profile";
 	}
 
