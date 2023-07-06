@@ -63,9 +63,10 @@
 			<div class="tab-1-content-inner">
 
 				<!--아이템들-->
+				<!-- EL 표현식에서 변수명을 적으면 get 함수가 자동 호출된다. -->
 				<c:forEach var="image" items="${user.images}">
 					<div class="img-box">
-						<a href=""> <img src="${image.postImageUrl}" />
+						<a href=""> <img src="/upload/${image.postImageUrl}" />
 						</a>
 						<div class="comment">
 							<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>

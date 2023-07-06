@@ -1,5 +1,6 @@
 package com.cos.photogramstart.web;
 
+import org.eclipse.jdt.internal.compiler.codegen.AttributeNamesConstants;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import com.cos.photogramstart.config.auth.PrincipalDetails;
 import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.service.UserService;
 
+import aj.org.objectweb.asm.Attribute;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class UserController {
 	@GetMapping({"/user/{id}"})
 	public String profile(@PathVariable int id, Model model) {//데이터 들고가기 model
 		User userEntitiy = userService.회원프로필(id);
-		model.addAttribute("images", userEntitiy);
+		model.addAttribute("user", userEntitiy);
 		return "user/profile";
 	}
 

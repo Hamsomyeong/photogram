@@ -19,6 +19,7 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Transactional(readOnly = true)
 	public User 회원프로필(int userId) {
 		// select*from image where userId=userId;
 		User userEntity = userRepository.findById(userId).orElseThrow(()->{
