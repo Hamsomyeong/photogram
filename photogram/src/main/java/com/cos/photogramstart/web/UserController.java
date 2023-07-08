@@ -3,6 +3,7 @@ package com.cos.photogramstart.web;
 import org.eclipse.jdt.internal.compiler.codegen.AttributeNamesConstants;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.cos.photogramstart.config.auth.PrincipalDetails;
 import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.service.UserService;
+import com.cos.photogramstart.web.dto.user.UserProfileDto;
 
 import aj.org.objectweb.asm.Attribute;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +22,17 @@ public class UserController {
 
 	private final UserService userService;
 	
-	@GetMapping({"/user/{id}"})
-	public String profile(@PathVariable int id, Model model) {//데이터 들고가기 model
-		User userEntitiy = userService.회원프로필(id);
-		model.addAttribute("user", userEntitiy);
+	@GetMapping({"/user/{pageUserId}"})
+	public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {//데이터 들고가기 model
+		UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
+		model.addAttribute("dto", dto);
 		return "user/profile";
 	}
 
 	@GetMapping({"/user/{id}/update"})
 	public String update(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println("세션 정보: "+principalDetails.getUser());
+		//no session에러 ->1. @Transactional 2. sysout 확인
+		//System.out.println("세션 정보: "+principalDetails.getUser());
 		
 		// Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         // PrincipalDetails mPrincipalDetails = (PrincipalDetails) auth.getPrincipal();
