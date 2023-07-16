@@ -12,7 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UserProfileDto {
-	private boolean pageOwnerState;//jsp에서 is가 붙으면 파싱이 잘 안됨
-	private User user;
-	private int imageCount;
+	//jsp에서 is가 붙으면 파싱이 잘 안됨
+    private boolean PageOwnerState; // 페이지 주인 여부 [1 : 주인o] [-1 : 주인x]
+
+    private Integer imageCount; // 업로드된 페이지 개수
+
+    private boolean subscribeState; // 구독상태. 했으면 true 안했으면 false
+
+    private Integer subscribeCount; // 구독자 수 카운팅
+
+    private User user; // 접속한 유저정보를 받을 유저 오브젝트
 }
