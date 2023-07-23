@@ -53,20 +53,9 @@ public class AuthController {
 	// 4. 예외처리는 한번에! -> CustomValidationException 직접 만들기
 	@PostMapping("/auth/signup")
 	public String signup(@Valid SignupDto signupDto, BindingResult bindingResult) {// key=value
-																									// 기본(x-www-form-urlencoded)
-		if (bindingResult.hasErrors()) {
-			Map<String, String> errorMap = new HashMap<>();
-			for (FieldError error : bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-				System.out.println(error.getDefaultMessage());
-			}
-			throw new CustomValidationException("유효검사 실패",errorMap);
-		} else {
 			User user = signupDto.toEntity();
-			User userEntitiy = authService.회원가입(user);
-			System.out.println(userEntitiy);		
+			authService.회원가입(user);	
 			return "auth/signin";
-		}
 	}
 
 }
