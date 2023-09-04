@@ -11,7 +11,7 @@
    인스타그램 형태로 만든 간단한 토이 프로젝트
 
  ### **세부사항**
-  - 개발기간 : 2020.11.23~2020.12.04
+  - 개발기간 : 2023.6.20~2023.7.24
   - 구현사항 : Spring Security, 로그인/회원가입, 좋아요, 댓글, 구독, 프로필 업로드, 게시글 작성
   - 개발 언어 : JAVA / 개발 툴: Spring Boot / RDBMS : MySQL
    
@@ -25,10 +25,10 @@
 - 메인화면 / 인기 게시글
     - 좋아요, 댓글 <br/>
     
-<img src="assets/photogram_main.jpg" width="300" height="300"/> <img src="assets/photogram_popular.jpg" width="600" height="300"/>
+<img src="assets/photogram_main.jpg" width="300" height="300"/> <img src="assets/photogram_popular.jpg" width="500" height="300"/>
 
 - 마이페이지 / 게시글 작성
     - 구독, 프로필 업로드, 게시글 작성 <br/>
     
-<img src="assets/photogram_mypage.jpg" width="550" height="300"/> <img src="assets/photogram_photoupload.jpg" width="350" height="300"/>
+<img src="assets/photogram_mypage.jpg" width="500" height="300"/> <img src="assets/photogram_photoupload.jpg" width="300" height="300"/>
 
