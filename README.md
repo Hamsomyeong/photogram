@@ -12,15 +12,23 @@
 
  ### **세부사항**
   - 개발기간 : 2020.11.23~2020.12.04
-  - 구현사항 : Spring Security, 로그인/회원가입, 좋아요, 댓글, 구독, 프로필 업로드, 게시글 작성, 
+  - 구현사항 : Spring Security, 로그인/회원가입, 좋아요, 댓글, 구독, 프로필 업로드, 게시글 작성
   - 개발 언어 : JAVA / 개발 툴: Spring Boot / RDBMS : MySQL
    
 
 ## 🔎**서비스 기능 소개**
 - 로그인 및 회원가입
-![image-20220408111239891](assets/photogram_login.jpg) | ![image-20220408111239891](assets/photogram_signup.jpg)
+    - 유효성 검사 <br/>
+    
+<img src="assets/photogram_login.jpg" width="300" height="300"/> <img src="assets/photogram_signup.jpg" width="300" height="300"/>
+
 - 메인화면 / 인기 게시글
-![image-20220408111239891](assets/photogram_main.jpg) | ![image-20220408111239891](assets/photogram_popular.jpg)
-- 마이페이지 / 게시글 업로드
-![image-20220408111239891](assets/photogram_mypage.jpg) | ![image-20220408111239891](assets/photogram_photoupload.jpg)
+    - 좋아요, 댓글 <br/>
+    
+<img src="assets/photogram_main.jpg" width="300" height="300"/> <img src="assets/photogram_popular.jpg" width="600" height="300"/>
+
+- 마이페이지 / 게시글 작성
+    - 구독, 프로필 업로드, 게시글 작성 <br/>
+    
+<img src="assets/photogram_mypage.jpg" width="550" height="300"/> <img src="assets/photogram_photoupload.jpg" width="350" height="300"/>
 
